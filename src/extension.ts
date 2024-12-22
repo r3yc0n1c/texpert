@@ -81,6 +81,93 @@ export function activate(context: vscode.ExtensionContext) {
 				vscode.window.showInformationMessage('No text selected!');
 			}
 		},
+		'toTitleCase': () => {
+			const editor = vscode.window.activeTextEditor;
+			if (editor) {
+				const selection = editor.selection; // Get the current selection
+				const text = editor.document.getText(selection); // Get the selected text
+				const titleCaseText = text.replace(
+					/\w\S*/g,
+					text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+				);
+	
+				// Apply the changes to the text in the editor
+				editor.edit(editBuilder => {
+					editBuilder.replace(selection, titleCaseText); // Replace the selected text with lowercase text
+				});
+			} else {
+				vscode.window.showInformationMessage('No text selected!');
+			}
+		},
+		'toSnakeCase': () => {
+			const editor = vscode.window.activeTextEditor;
+			if (editor) {
+				const selection = editor.selection; // Get the current selection
+				const text = editor.document.getText(selection); // Get the selected text
+				const snakeCaseText = text.replace(/\W+/g, " ")
+					.split(/ |\B(?=[A-Z])/)
+					.map(word => word.toLowerCase())
+					.join('_');
+		
+				// Apply the changes to the text in the editor
+				editor.edit(editBuilder => {
+					editBuilder.replace(selection, snakeCaseText); // Replace the selected text with lowercase text
+				});
+			} else {
+				vscode.window.showInformationMessage('No text selected!');
+			}
+		},
+		'toCamelCase': () => {
+			const editor = vscode.window.activeTextEditor;
+			if (editor) {
+				const selection = editor.selection; // Get the current selection
+				const text = editor.document.getText(selection); // Get the selected text
+				const camelCaseText = text.replace(/[^a-zA-Z0-9]+(.)/g, (match, chr) => chr.toUpperCase());
+		
+				// Apply the changes to the text in the editor
+				editor.edit(editBuilder => {
+					editBuilder.replace(selection, camelCaseText); // Replace the selected text with lowercase text
+				});
+			} else {
+				vscode.window.showInformationMessage('No text selected!');
+			}
+		},
+		'toPascalCase': () => {
+			const editor = vscode.window.activeTextEditor;
+			if (editor) {
+				const selection = editor.selection; // Get the current selection
+				const text = editor.document.getText(selection); // Get the selected text
+				const pascalCaseText = text
+					.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)!
+    				.map((x) => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase())
+    				.join("");
+		
+				// Apply the changes to the text in the editor
+				editor.edit(editBuilder => {
+					editBuilder.replace(selection, pascalCaseText); // Replace the selected text with lowercase text
+				});
+			} else {
+				vscode.window.showInformationMessage('No text selected!');
+			}
+		},
+		'toKebabCase': () => {
+			const editor = vscode.window.activeTextEditor;
+			if (editor) {
+				const selection = editor.selection; // Get the current selection
+				const text = editor.document.getText(selection); // Get the selected text
+				const kebabCaseText = text
+					.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)!
+					.join('-')
+					.toLowerCase();
+		
+				// Apply the changes to the text in the editor
+				editor.edit(editBuilder => {
+					editBuilder.replace(selection, kebabCaseText); // Replace the selected text with lowercase text
+				});
+			} else {
+				vscode.window.showInformationMessage('No text selected!');
+			}
+		},
 		'reverseText': () => {
 			const editor = vscode.window.activeTextEditor;
 			if (editor) {
@@ -125,7 +212,7 @@ export function activate(context: vscode.ExtensionContext) {
 			} else {
 				vscode.window.showInformationMessage('No text selected!');
 			}			
-		},
+		},		
 		'generatePassword': async () => {
 			const length = await vscode.window.showInputBox({
 				prompt: 'Enter password length (8-128)',

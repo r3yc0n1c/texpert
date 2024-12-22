@@ -26,6 +26,26 @@
         "title": "Texpert: To LowerCase"
       },
       {
+        "command": "texpert.toTitleCase",
+        "title": "Texpert: Title Case"
+      },
+      {
+        "command": "texpert.toSnakeCase",
+        "title": "Texpert: Snake Case"
+      },
+      {
+        "command": "texpert.toCamelCase",
+        "title": "Texpert: Camel Case"
+      },
+      {
+        "command": "texpert.toPascalCase",
+        "title": "Texpert: Pascal Case"
+      },
+      {
+        "command": "texpert.toKebabCase",
+        "title": "Texpert: Kebab Case"
+      },
+      {
         "command": "texpert.reverseText",
         "title": "Texpert: Reverse Text"
       },
@@ -33,10 +53,6 @@
         "command": "texpert.removeWhitespace",
         "title": "Texpert: Remove Whitespace"
       },
-      {
-        "command": "texpert.removeExtraSpaces",
-        "title": "Texpert: Remove Extra Spaces"
-      },      
       {
         "command": "texpert.generatePassword",
         "title": "Texpert: Password Generator"
