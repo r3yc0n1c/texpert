@@ -1,10 +1,15 @@
 {
   "name": "texpert",
-  "displayName": "texpert",
+  "displayName": "Texpert",
   "description": "Swiss Army Knife for text",
-  "version": "0.0.1",
+  "version": "1.1.0",
+  "publisher": "r3yc0n1c",
   "engines": {
     "vscode": "^1.96.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/r3yc0n1c/texpert.git"
   },
   "categories": [
     "Other"
@@ -56,6 +61,10 @@
       {
         "command": "texpert.generatePassword",
         "title": "Texpert: Password Generator"
+      },
+      {
+        "command": "texpert.cleanText",
+        "title": "Texpert: Clean Text"
       }
     ]
   },
@@ -71,7 +80,9 @@
     "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "prod": "vsce package --out dist/texpert.vsix",
+    "ci": "code --install-extension dist/texpert.vsix"
   },
   "devDependencies": {
     "@types/vscode": "^1.96.0",
@@ -85,5 +96,6 @@
     "typescript": "^5.7.2",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

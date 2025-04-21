@@ -33,11 +33,12 @@ Texpert does not currently add custom settings to VS Code via `contributes.confi
 
 ### Available Commands:
 
+- `texpert.cleanText`: Cleans AI generated text.
 - `texpert.generatePassword`: Generates a secure password and pastes it at the cursor position.
-- `texpert.toUpperCase`: Converts selected text to uppercase.
-- `texpert.toLowerCase`: Converts selected text to lowercase.
-- `texpert.reverseText`: Reverses the selected text.
 - `texpert.removeWhitespace`: Removes extra whitespace from the selected text.
+- `texpert.reverseText`: Reverses the selected text.
+- `texpert.toLowerCase`: Converts selected text to lowercase.
+- `texpert.toUpperCase`: Converts selected text to uppercase.
 
 ## Known Issues
 
@@ -51,7 +52,14 @@ Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
-Initial release of **Texpert**
+- Initial release of **Texpert**
+
+### 1.1.0
+
+- Added Clean Text feat.
+- Changes extension `displayName`.
+- Added `publisher` and `repository`.
+- Added new package.json commands - `prod`, `ci`
 
 <!-- ### 1.0.1
 

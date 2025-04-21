@@ -212,7 +212,30 @@ export function activate(context: vscode.ExtensionContext) {
 			} else {
 				vscode.window.showInformationMessage('No text selected!');
 			}			
-		},		
+		},
+		'cleanText': () => {
+			const editor = vscode.window.activeTextEditor;
+			if (editor) {
+				const selection = editor.selection; // Get the current selection
+				const text = editor.document.getText(selection); // Get the selected text
+				const charMap = {
+					'“': '"',
+					'”': '"',
+					'‘': '\'',
+					'’': '\'',
+					'—': '-',
+				};
+				// Remove unwanted characters
+				const cleanedText = text.replace(/['"“”‘’\-—]/g, match => charMap[match as keyof typeof charMap] || match);
+		
+				// Apply the changes to the text in the editor
+				editor.edit(editBuilder => {
+					editBuilder.replace(selection, cleanedText); // Replace the selected text with cleaned text
+				});
+			} else {
+				vscode.window.showInformationMessage('No text selected!');
+			}
+		},
 		'generatePassword': async () => {
 			const length = await vscode.window.showInputBox({
 				prompt: 'Enter password length (8-128)',
