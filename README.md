@@ -27,6 +27,19 @@ Example screenshots of these features in action:
 
 Texpert requires **Visual Studio Code** version **1.60.0** or higher. No additional dependencies are required for basic functionality.
 
+## Installation
+
+### Dev
+```sh
+$ npm install -g yarn @vscode/vsce
+# install deps
+$ yarn install
+# compile to vsix
+$ yarn prod
+# install in vscode
+$ yarn ci
+```
+
 ## Extension Settings
 
 Texpert does not currently add custom settings to VS Code via `contributes.configuration`. However, you can customize its behavior by modifying the commands available through the command palette.
